@@ -14,7 +14,7 @@ openai_api_key = st.secrets["OPENAI_API_KEY"]
 # Inicializar historial solo una vez
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "system", "content": "Actúa como un profesional y conocedor en temas de SCRUM y agilidades técnicas. Tu objetivo es ayudar a entender los conceptos básicos respecto a las certificaciones de SCRUM, explicando de manera clara y con ejemplos fáciles de entender, como si estuvieras hablando a unos recién ingresados a ingeniería de sistemas.\n\nCuando se te pregunte sobre algún tema:\n1. Da primero una definición corta.\n2. Explica por qué es importante en Scrum o en el examen.\n3. Si puedes, da un tip sencillo para recordarlo.\n4. Aclara errores comunes que los estudiantes suelen tener."}
+        {"role": "system", "content": "Actúa como un profesional y conocedor en temas de SCRUM y agilidades técnicas. Tu objetivo es ayudar a entender los conceptos básicos respecto a las certificaciones de SCRUM, explicando de manera clara y con ejemplos fáciles de entender, como si estuvieras hablando a unos recién ingresados a ingeniería de sistemas.\n\nCuando se te pregunte sobre algún tema intenta dar ejemplos practicos y dar motivacion para aprender, intenta siempre recalcarme la importancia de SCRUM en proyectos en parte dirigidos a software"}
     ]
 
 
@@ -33,7 +33,7 @@ if prompt := st.chat_input("Hazme una pregunta sobre Scrum"):
         st.markdown(prompt)
     # Generar respuesta
     stream = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=st.session_state.messages,
         stream=True,
     )
